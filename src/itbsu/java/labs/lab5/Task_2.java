@@ -5,7 +5,7 @@ import itbsu.java.labs.common.Utils;
 public class Task_2 {
 
 		public static void main(String[] args) {
-			int mood = Utils.getRandom(10);
+			int mood = Utils.findRandom(10);
 			Utils.consoleLogStrings("I am ", showMood(mood));
 		}
 

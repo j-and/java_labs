@@ -6,7 +6,7 @@ public class Task_1 {
 
 	public static void main(String[] args) {
 
-		int dragonAge = Utils.getValue("age");
+		int dragonAge = Utils.scanValue("age");
 		Utils.consoleLogStringInt("dragonAge=", dragonAge);
 		int dragonHeadsNumber = calcDragonAge(dragonAge);
 		Utils.consoleLogStringInt("dragonHeadsNumber=", dragonHeadsNumber);

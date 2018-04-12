@@ -4,7 +4,7 @@ import itbsu.java.labs.common.Utils;
 public class HeadOrTails {
 
 	public static void main(String[] args) {
-		int numberOfThrowing = Utils.getValue("num");
+		int numberOfThrowing = Utils.scanValue("num");
 		Utils.consoleLogStringInt("numberOfThrowing=", numberOfThrowing);
 		calcHeads(numberOfThrowing);
 		Utils.consoleLogStringInt("countHeads=", calcHeads(numberOfThrowing));
@@ -14,7 +14,7 @@ public class HeadOrTails {
 		int isHead;//=0;
 		int countHeads=0;
 		for(int i=0; i<=num;i++) {
-			isHead=Utils.getRandom(2);//returns random value 1(heads) or 2(tails)
+			isHead=Utils.findRandom(2);//returns random value 1(heads) or 2(tails)
 			if(isHead==1) {
 				countHeads++;
 			}

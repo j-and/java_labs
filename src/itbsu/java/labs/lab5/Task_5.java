@@ -3,7 +3,7 @@ import itbsu.java.labs.common.Utils;
 
 public class Task_5 {
 	public static void main(String[] args) {
-		int surprizeNumber = Utils.getRandom(5);
+		int surprizeNumber = Utils.findRandom(5);
 		Utils.consoleLogStrings("Inside this pie is ", getFilling(surprizeNumber));
 	}
 

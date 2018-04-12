@@ -6,7 +6,7 @@ import itbsu.java.labs.common.Utils;
 public class revertedNumber {
 
     public static void main(String[] args) {
-        int number = Utils.getValue("num");
+        int number = Utils.scanValue("num");
         Utils.consoleLogStringInt("The number you want to revert = ", number);
 
         revertNumber(number);

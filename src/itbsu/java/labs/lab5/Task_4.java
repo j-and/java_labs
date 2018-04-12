@@ -5,7 +5,7 @@ public class Task_4 {
 
 	public static void main(String[] args) {
 
-		char letterToCheck = Utils.getChar("letter");
+		char letterToCheck = Utils.scanChar("letter");
 		Utils.consoleLog("This letter is vowel - it's ", isVowelMethod1(letterToCheck));
 		Utils.consoleLog("This letter is vowel - it's ", isVowelMethod2(letterToCheck));
 		Utils.consoleLog("This letter is vowel - it's ", isVowelMethod3(letterToCheck));

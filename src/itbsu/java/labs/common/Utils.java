@@ -8,19 +8,17 @@ public class Utils {
     public static void main(String[] args) {
     }
 
-    public static int getValue(String value) {
-        return getValue(new Scanner(System.in), value);
+    public static int scanValue(String value) {
+        return scanValue(new Scanner(System.in), value);
     }
 
-    public static int getValue(Scanner scanner, String value) {
-        // Scanner scanner = new Scanner(System.in);
+    public static int scanValue(Scanner scanner, String value) {
         consoleLogStrings("Please, enter ", value);
         int num = scanner.nextInt();
-        // scanner.close();
         return num;
     }
 
-    public static char getChar(String value) {
+    public static char scanChar(String value) {
         Scanner scanner = new Scanner(System.in);
         consoleLogStrings("Please, enter ", value);
         char character = scanner.next().toUpperCase().charAt(0);
@@ -28,14 +26,14 @@ public class Utils {
         return character;
     }
 
-    public static int getRandom(int max) {
+    public static int findRandom(int max) {
         Random rand = new Random();
         int randomValue = rand.nextInt(max) + 1;
         consoleLogStringInt("Random value is ", randomValue);
         return randomValue;
     }
 
-    public static int getSum(int num1, int num2) {
+    public static int findSum(int num1, int num2) {
         int sum = num1 + num2;
         consoleLogStringInt("Sum is ", sum);
         return sum;
