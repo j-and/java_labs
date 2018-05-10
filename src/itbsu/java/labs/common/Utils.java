@@ -29,7 +29,7 @@ public class Utils {
     public static int findRandom(int max) {
         Random rand = new Random();
         int randomValue = rand.nextInt(max) + 1;
-        consoleLogStringInt("Random value is ", randomValue);
+        // consoleLogStringInt("Random value is ", randomValue);
         return randomValue;
     }
 
