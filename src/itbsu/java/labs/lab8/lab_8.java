@@ -1,40 +1,40 @@
 package itbsu.java.labs.lab8;
 
-import java.util.Random;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import itbsu.java.labs.common.ArrayOperators;
 import itbsu.java.labs.common.Utils;
 
 public class lab_8 {
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         int N = Utils.scanValue(scanner, "arraySize");
 
-        int maxNumber = 100;
-        int[] randomArray = fillArray(N, maxNumber);
-        findMaxElement(randomArray);
-        findMinElement(randomArray);
-        findAverageArifmetic(randomArray);
-        findAverageGeometric(randomArray);
-        isArraySorted(randomArray);
-        reverseArray(randomArray);
-        findLocalMin(randomArray);
-        findLocalMax(randomArray);
+        /* Integer array for common tasks */
+        // int[] randomArray = ArrayOperators.fillArray(N, maxNumber);
+        /* Double array and its characteristics for individual tasks */
+        double[] randomArrayDouble = ArrayOperators.fillDoubleArray(N);
+        double maxElement = ArrayOperators.findMaxElement(randomArrayDouble);
+        double minElement = ArrayOperators.findMinElement(randomArrayDouble);
+        int maxElementPosition = ArrayOperators.findMaxElementPosition(randomArrayDouble);
+        int minElementPosition = ArrayOperators.findMinElementPosition(randomArrayDouble);
 
-    }
+        DoubleArray doubleArray = new DoubleArray(maxElement, minElement, maxElementPosition, minElementPosition);
+        System.out.printf("doubleArray[i] = " + Arrays.toString(randomArrayDouble));
+        // findMaxElement(randomArray);
+        // findMinElement(randomArray);
+        // findAverageArifmetic(randomArray);
+        // findAverageGeometric(randomArray);
+        // isArraySorted(randomArray);
+        // reverseArray(randomArray);
+        // findLocalMin(randomArray);
+        // findLocalMax(randomArray);
+        // ind_task_1(randomArrayDouble, doubleArray);
+        ind_task_3(randomArrayDouble, doubleArray);
 
-    public static int[] fillArray(int N, int max) {
-        Random rand = new Random();
-        int[] array = new int[N];
-        for (int i = 0; i < N; i++) {
-            int randomValue = rand.nextInt(max) + 1;
-            array[i] = randomValue;
-            // System.out.printf("array[i] = " + array[i]);
-        }
-
-        return array;
     }
 
     public static int findMaxElement(int[] array) {
@@ -139,6 +139,33 @@ public class lab_8 {
         }
         System.out.printf("localMax= " + localMax);
         return localMax;
+    }
+
+    public static void ind_task_1(double[] array, DoubleArray doubleArray) {
+        double negativeSum = ArrayOperators.findSumArrayDouble(ArrayOperators.findNegativeElements(array));
+        Utils.consoleLogStringDouble("negativeSum= ", negativeSum);
+        int start = doubleArray.getMinElementPosition();
+        int end = doubleArray.getMaxElementPosition();
+        if (end < start) {
+            int temp = start;
+            start = end;
+            end = temp;
+        }
+        double multipleMinMax = ArrayOperators.findMultiplyArrayDouble(start, end, array);
+        Utils.consoleLogStringDouble("Multiple between min and max elements = ", multipleMinMax);
+    }
+
+    public static void ind_task_3(double[] array, DoubleArray doubleArray) {
+        double maxElement = ArrayOperators.findMaxElement(array);
+        Utils.consoleLogStringDouble("maxElement= ", maxElement);
+
+        ArrayOperators.findPositiveElements(array);
+        // for (int i = 0; i < positiveArray.length; i++) {
+        // if (array[i] > 0) {
+        // positiveArray[i] = array[i];
+        // }
+        System.out.printf("length " + ArrayOperators.findPositiveElements(array).length);
+        // }
     }
 
 }

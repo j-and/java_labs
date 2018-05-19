@@ -51,6 +51,10 @@ public class Utils {
         System.out.printf(text + num + "\n");
     }
 
+    public static void consoleLogStringDouble(String text, double num) {
+        System.out.printf(text + num + "\n");
+    }
+
     public static void printArray(int length, int[] array) {
         for (int i = 0; i < length; i++) {
             consoleLogStringInt("array[i]= ", array[i]);
