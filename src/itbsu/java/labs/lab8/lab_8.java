@@ -33,7 +33,8 @@ public class lab_8 {
         // findLocalMin(randomArray);
         // findLocalMax(randomArray);
         // ind_task_1(randomArrayDouble, doubleArray);
-        ind_task_3(randomArrayDouble, doubleArray);
+        // ind_task_3(randomArrayDouble, doubleArray);
+        ind_task_5(randomArrayDouble, doubleArray);
 
     }
 
@@ -159,13 +160,49 @@ public class lab_8 {
         double maxElement = ArrayOperators.findMaxElement(array);
         Utils.consoleLogStringDouble("maxElement= ", maxElement);
 
-        ArrayOperators.findPositiveElements(array);
-        // for (int i = 0; i < positiveArray.length; i++) {
-        // if (array[i] > 0) {
-        // positiveArray[i] = array[i];
-        // }
-        System.out.printf("length " + ArrayOperators.findPositiveElements(array).length);
-        // }
+        double[] positiveArray = ArrayOperators.findPositiveElements(array);
+        int i = 0;
+        for (i = array.length - 1; i > 0; i--) {
+            if (array[i] == positiveArray[i]) {
+                break;
+            }
+        }
+        double[] cutArray = ArrayOperators.findCutArrayDouble(array, 0, i);
+        double sumDouble = ArrayOperators.findSumArrayDouble(cutArray);
+        Utils.consoleLogStringDouble("sumDouble= ", sumDouble);
     }
 
+    public static void ind_task_5(double[] array, DoubleArray doubleArray) {
+
+        double[] squareArray = new double[array.length];
+        for (int i = 0; i < squareArray.length; i++) {
+            squareArray[i] = Math.pow(array[i], 2);
+        }
+
+        double maxElementAbs = Math.pow(ArrayOperators.findMaxElement(squareArray), 0.5);
+        Utils.consoleLogStringDouble("maxElementAbs= ", maxElementAbs);
+
+        int i = 0, j = 0;
+        for (i = 0; i < array.length; i++) {
+            if (array[i] == ArrayOperators.findPositiveElements(array)[i]) {
+                Utils.consoleLogStringDouble("i= ", i);
+                break;
+            }
+        }
+
+        double[] cutArray = ArrayOperators.findCutArrayDouble(array, i, array.length);
+        for (j = 0; j < cutArray.length; j++) {
+            if (cutArray[j] == ArrayOperators.findPositiveElements(cutArray)[j]) {
+                Utils.consoleLogStringDouble("j= ", j);
+                break;
+            }
+        }
+        if (j == 0) {
+            j = i;
+        }
+
+        cutArray = ArrayOperators.findCutArrayDouble(array, i, j);
+        double sumDouble = ArrayOperators.findSumArrayDouble(cutArray);
+        Utils.consoleLogStringDouble("sumDouble= ", sumDouble);
+    }
 }

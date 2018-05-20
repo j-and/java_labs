@@ -36,24 +36,6 @@ public class ArrayOperators {
         return array;
     }
 
-    public static double[] fillArrayWithDouble(int N) {
-        Random rand = new Random();
-        double[] array = new double[N];
-
-        for (int i = 0; i < N; i++) {
-            // double randomValue = rand.nextDouble() * (upper - lower) + lower;
-
-            int number = rand.nextInt(-10) + 1;// gets a random integer out of 35
-            double randDouble = rand.nextDouble();// gets a random double
-            double randomValue = ((number + randDouble) - 10) / 100;
-
-            array[i] = randomValue;
-            // System.out.printf("array[i] = " + array[i]);
-        }
-
-        return array;
-    }
-
     public static int findSumArray(int[] elements) {
         int sumArray = 0;
         for (int i = 0; i < elements.length; i++) {
@@ -68,6 +50,19 @@ public class ArrayOperators {
             sumArray += elements[i];
         }
         return sumArray;
+    }
+
+    public static double[] findCutArrayDouble(double[] elements, int start, int end) {
+        if (end < start) {
+            Utils.consoleLogStringDouble("Smth wrong: check start=", start);
+            Utils.consoleLogStringDouble("Smth wrong: check end =", end);
+
+        }
+        double[] cutArray = new double[(end - start)];
+        for (int i = start; i < end; i++) {
+            cutArray[i] = elements[i];
+        }
+        return cutArray;
     }
 
     public static double findMultiplyArrayDouble(int start, int end, double[] elements) {
@@ -107,7 +102,7 @@ public class ArrayOperators {
         double[] array = new double[length];
         Random rand = new Random();
         for (int i = 0; i < length; i++) {
-            array[i] = rand.nextDouble();
+            array[i] = rand.nextDouble() - 0.5;
         }
         return array;
     }
