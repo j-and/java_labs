@@ -34,7 +34,8 @@ public class lab_8 {
         // findLocalMax(randomArray);
         // ind_task_1(randomArrayDouble, doubleArray);
         // ind_task_3(randomArrayDouble, doubleArray);
-        ind_task_5(randomArrayDouble, doubleArray);
+        // ind_task_5(randomArrayDouble, doubleArray);
+        ind_task_6(randomArrayDouble, doubleArray);
 
     }
 
@@ -173,7 +174,6 @@ public class lab_8 {
     }
 
     public static void ind_task_5(double[] array, DoubleArray doubleArray) {
-
         double[] squareArray = new double[array.length];
         for (int i = 0; i < squareArray.length; i++) {
             squareArray[i] = Math.pow(array[i], 2);
@@ -190,7 +190,6 @@ public class lab_8 {
                 break;
             }
         }
-
         if (ArrayOperators.findPositiveElementsLength(array) > 1) {
             double[] cutArray = ArrayOperators.findCutArrayDouble(array, i + 1, array.length - 1);
             int k = array.length - cutArray.length;
@@ -206,12 +205,42 @@ public class lab_8 {
                     sumDouble = array[i];
                 }
             }
-        }
-
-        else {
+        } else {
             sumDouble = 0;
         }
-
         Utils.consoleLogStringDouble("sumDouble= ", sumDouble);
     }
+
+    public static void ind_task_6(double[] array, DoubleArray doubleArray) {
+
+        double[] squareArray = new double[array.length];
+        for (int i = 0; i < squareArray.length; i++) {
+            squareArray[i] = Math.pow(array[i], 2);
+        }
+
+        int maxElementAbsPosition = ArrayOperators.findMaxElementPosition(squareArray);
+        Utils.consoleLogStringDouble("maxElementAbsPosition= ", maxElementAbsPosition);
+
+        double sumDouble = 0;
+        int i = 0;
+
+        for (i = 0; i < array.length; i++) {
+            if (array[i] == ArrayOperators.findPositiveElements(array)[i]) {
+                Utils.consoleLogStringDouble("i= ", i);
+                break;
+            }
+        }
+        if (ArrayOperators.findPositiveElementsLength(array) == 0) {
+            sumDouble = 0;
+        } else {
+            if (ArrayOperators.findPositiveElementsLength(array) == 1) {
+                sumDouble = array[i];
+            } else {
+                double[] cutArray = ArrayOperators.findCutArrayDouble(array, i + 1, array.length - 1);
+                sumDouble = ArrayOperators.findSumArrayDouble(cutArray) + array[array.length - 1];
+            }
+        }
+        Utils.consoleLogStringDouble("sumDouble= ", sumDouble);
+    }
+
 }
