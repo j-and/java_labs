@@ -182,27 +182,36 @@ public class lab_8 {
         double maxElementAbs = Math.pow(ArrayOperators.findMaxElement(squareArray), 0.5);
         Utils.consoleLogStringDouble("maxElementAbs= ", maxElementAbs);
 
+        double sumDouble = 0;
         int i = 0, j = 0;
+
         for (i = 0; i < array.length; i++) {
             if (array[i] == ArrayOperators.findPositiveElements(array)[i]) {
-                Utils.consoleLogStringDouble("i= ", i);
                 break;
             }
         }
 
-        double[] cutArray = ArrayOperators.findCutArrayDouble(array, i, array.length);
-        for (j = 0; j < cutArray.length; j++) {
-            if (cutArray[j] == ArrayOperators.findPositiveElements(cutArray)[j]) {
-                Utils.consoleLogStringDouble("j= ", j);
-                break;
+        if (ArrayOperators.findPositiveElementsLength(array) > 1) {
+            double[] cutArray = ArrayOperators.findCutArrayDouble(array, i + 1, array.length - 1);
+            int k = array.length - cutArray.length;
+
+            for (j = 0; j < cutArray.length; j++) {
+                if (cutArray[j] == ArrayOperators.findPositiveElements(cutArray)[j] && cutArray[j] != 0) {
+                    cutArray = ArrayOperators.findCutArrayDouble(array, i, j + k);
+                    sumDouble = ArrayOperators.findSumArrayDouble(cutArray);
+                    break;
+                }
+
+                else {
+                    sumDouble = array[i];
+                }
             }
         }
-        if (j == 0) {
-            j = i;
+
+        else {
+            sumDouble = 0;
         }
 
-        cutArray = ArrayOperators.findCutArrayDouble(array, i, j);
-        double sumDouble = ArrayOperators.findSumArrayDouble(cutArray);
         Utils.consoleLogStringDouble("sumDouble= ", sumDouble);
     }
 }

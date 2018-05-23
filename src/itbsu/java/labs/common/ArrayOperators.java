@@ -54,11 +54,13 @@ public class ArrayOperators {
 
     public static double[] findCutArrayDouble(double[] elements, int start, int end) {
         if (end < start) {
-            Utils.consoleLogStringDouble("Smth wrong: check start=", start);
-            Utils.consoleLogStringDouble("Smth wrong: check end =", end);
+            int temp = 0;
+            temp = start;
+            start = end;
+            end = temp;
 
         }
-        double[] cutArray = new double[(end - start)];
+        double[] cutArray = new double[(end - start + 1)];
         for (int i = start; i < end; i++) {
             cutArray[i] = elements[i];
         }
@@ -93,9 +95,21 @@ public class ArrayOperators {
             if (array[i] > 0) {
                 positiveArray[i] = array[i];
             }
-            // System.out.printf("positiveArray[i]= " + positiveArray[i]);
         }
+        // System.out.printf("positiveArray[i]= " + Arrays.toString(positiveArray));
         return positiveArray;
+    }
+
+    public static int findPositiveElementsLength(double[] array) {
+        double[] positiveArray = new double[array.length];
+        int count = 0;
+        for (int i = 0; i < positiveArray.length; i++) {
+            if (array[i] > 0) {
+                count++;
+            }
+        }
+        System.out.printf("count[i]= " + count);
+        return count;
     }
 
     public static double[] fillDoubleArray(int length) {
